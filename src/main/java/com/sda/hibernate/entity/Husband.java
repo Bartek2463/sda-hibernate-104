@@ -14,7 +14,7 @@ public class Husband {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     String name; // Andrzej
-    @OneToOne(cascade = CascadeType.PERSIST)
+    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     @JoinColumn(name = "my_wife_id")
     Wife wife; // Martyna
 
