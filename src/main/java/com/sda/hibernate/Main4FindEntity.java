@@ -5,6 +5,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
+import java.util.Optional;
+
 public class Main4FindEntity {
 
     public static void main(String[] args) {
@@ -25,7 +27,7 @@ public class Main4FindEntity {
             System.out.println(dogTwo.getName());
         }
 
-        Dog dogThree = session.load(Dog.class, 300L);
+        Dog dogThree = session.load(Dog.class, 3L);
         if (dogThree != null) {
             System.out.println(dogThree.getId());
             System.out.println(dogThree.getName()); // SELECT -> ObjectNotFoundException

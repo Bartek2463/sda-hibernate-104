@@ -5,10 +5,13 @@
         <property name="connection.url">jdbc:mysql://localhost:3306/jdbc_schema?serverTimezone=Europe/Warsaw</property>
         <property name="connection.username">root</property>
         <property name="connection.password">michal1</property>
-        <property name="hbm2ddl.auto">none</property>
+        <property name="hbm2ddl.auto">update</property>
         <property name="show_sql">true</property>
         <property name="format_sql">false</property>
         <property name="use.sql_comments">true</property>
         <mapping class="com.sda.hibernate.entity.Dog"/>
+        <mapping class="com.sda.hibernate.entity.Employee"/>
+        <mapping class="com.sda.hibernate.entity.Husband"/>
+        <mapping class="com.sda.hibernate.entity.Wife"/>
     </session-factory>
 </hibernate-configuration>
