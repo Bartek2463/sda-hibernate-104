@@ -14,12 +14,17 @@ public class Husband {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     String name; // Andrzej
-    @OneToOne
+    @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "my_wife_id")
     Wife wife; // Martyna
 
     public Husband(String name) {
         this.name = name;
+    }
+
+    public Husband(String name, Wife wife) {
+        this.name = name;
+        this.wife = wife;
     }
 }
 

@@ -23,6 +23,14 @@ public class Main9OneToOne {
         // husband.setWife(wife);
         wife.setHusband(husband);
 
+        System.out.println("------");
+
+        session.persist(new Husband("Michał", new Wife("Katarzyna")));
+        session.persist(new Husband("Damian", new Wife("Sabrina")));
+        session.persist(new Husband("Bartek", new Wife("Kinga")));
+        session.persist(new Husband("Piotr", new Wife("Joanna")));
+        session.persist(new Husband("Kacper", new Wife("Natalia")));
+
         transaction.commit();
         session.close();
     }
