@@ -15,23 +15,28 @@ public class Main4FindEntity {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
 
-        Dog dogOne = session.find(Dog.class, 100L);  // SELECT
-        if (dogOne != null) {
-            System.out.println(dogOne.getId());
-            System.out.println(dogOne.getName());
+        Dog dog = session.find(Dog.class, 1L);
+        if (dog != null) {
+
+            System.out.println("dog.getId() = " + dog.getId());
+            System.out.println("dog.getRace() = " + dog.getRace());
+
         }
 
-        Dog dogTwo = session.get(Dog.class, 200L); // SELECT
-        if (dogTwo != null) {
-            System.out.println(dogTwo.getId());
-            System.out.println(dogTwo.getName());
+        Dog dog1 = session.get(Dog.class, 4L);
+        if (dog1 != null) {
+            System.out.println("dog1.getId() = " + dog1.getId());
+            System.out.println("dog1 = " + dog1.getRace());
         }
 
-        Dog dogThree = session.load(Dog.class, 3L);
-        if (dogThree != null) {
-            System.out.println(dogThree.getId());
-            System.out.println(dogThree.getName()); // SELECT -> ObjectNotFoundException
+
+        Dog dog2 = session.load(Dog.class, 6L);
+
+        if (dog2 != null) {
+            System.out.println("dog2.getAge() = " + dog2.getAge());
+            System.out.println("dog2.getId() = " + dog2.getId());
         }
+
 
         transaction.commit();
         session.close();

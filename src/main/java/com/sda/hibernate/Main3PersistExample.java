@@ -13,14 +13,11 @@ public class Main3PersistExample {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
 
-        Dog dog = new Dog("Azor", 10, "Husky");
-        System.out.println("Id: " + dog.getId());
-        session.persist(dog); // insert into dog (age, name, race) values (?, ?, ?)
-        System.out.println("Id: " + dog.getId());
+        Dog dog = new Dog("",4,"");
 
-        dog.setAge(11);
-        // session.evict(dog);
-        dog.setRace("Chihuahua");
+        session.persist(dog);
+        session.evict(dog);
+        dog.setName("Azor");
 
         transaction.commit(); // update dog set age=?, name=?, race=? where id=?
         session.close();

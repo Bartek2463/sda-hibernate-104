@@ -9,7 +9,6 @@ public class Main2PersistEntity {
 
     public static void main(String[] args) {
         SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
-
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
 
@@ -18,7 +17,7 @@ public class Main2PersistEntity {
         session.persist(new Dog("Reksio", 6, "Doberman"));
         session.persist(new Dog("Benio", 12, "Jamnik"));
         session.persist(new Dog("Aza", 4, "Wilczur"));
-
+        
         transaction.commit();
         session.close();
     }
