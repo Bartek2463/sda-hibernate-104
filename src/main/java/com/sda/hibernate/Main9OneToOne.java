@@ -6,6 +6,9 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
+import javax.persistence.OptimisticLockException;
+import java.util.Optional;
+
 public class Main9OneToOne {
 
     public static void main(String[] args) {
@@ -14,22 +17,10 @@ public class Main9OneToOne {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
 
-        Husband husband = new Husband("Adam");
-        Wife wife = new Wife("Ewa");
+       Husband husband = session.find(Husband.class, 4L);
+        Optional.ofNullable(husband);
+        System.out.println(husband.getName());
 
-        session.persist(husband);
-        session.persist(wife);
-
-        // husband.setWife(wife);
-        wife.setHusband(husband);
-
-        System.out.println("------");
-
-        session.persist(new Husband("Michał", new Wife("Katarzyna")));
-        session.persist(new Husband("Damian", new Wife("Sabrina")));
-        session.persist(new Husband("Bartek", new Wife("Kinga")));
-        session.persist(new Husband("Piotr", new Wife("Joanna")));
-        session.persist(new Husband("Kacper", new Wife("Natalia")));
 
         transaction.commit();
         session.close();

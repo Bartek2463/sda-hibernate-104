@@ -13,9 +13,9 @@ public class Main10RemoveCascade {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
 
-        Husband husband = session.find(Husband.class, 17L);
+        Husband husband = session.find(Husband.class, 6L);
         if (husband != null) {
-            session.remove(husband);
+            session.delete(husband);
         }
 
         transaction.commit();

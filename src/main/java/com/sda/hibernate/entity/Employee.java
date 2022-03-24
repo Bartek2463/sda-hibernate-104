@@ -1,5 +1,6 @@
 package com.sda.hibernate.entity;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -10,8 +11,7 @@ import java.util.Date;
 @Entity
 @Table(name = "employee_table")
 @NoArgsConstructor
-@Setter
-@Getter
+@Data
 public class Employee {
 
     @Id
@@ -21,13 +21,13 @@ public class Employee {
     String name;
     @Column(name = "password")
     String secret;
-    @Column(length = 9, unique = true)
+    @Column(length = 9,unique = true)
     String telephoneNumber;
     @Transient
     long age;
     @Temporal(TemporalType.DATE)
     Date birthDate;
-    @Enumerated(EnumType.STRING)
+    @Enumerated(EnumType.STRING) // typ wyliczeniowy Enum
     Gender gender;
     @Lob
     String description;

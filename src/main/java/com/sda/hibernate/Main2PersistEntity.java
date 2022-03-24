@@ -12,12 +12,12 @@ public class Main2PersistEntity {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
 
-        session.persist(new Dog("Ares", 10, "Terier"));
-        session.persist(new Dog("Sonia", 5, "Buldog"));
-        session.persist(new Dog("Reksio", 6, "Doberman"));
-        session.persist(new Dog("Benio", 12, "Jamnik"));
-        session.persist(new Dog("Aza", 4, "Wilczur"));
-        
+        session.persist(new Dog("Ares", 10, "Terier","asd"));
+        session.persist(new Dog("Sonia", 5, "Buldog","dfs"));
+        session.persist(new Dog("Reksio", 6, "Doberman","rty"));
+        session.persist(new Dog("Benio", 12, "Jamnik","pol"));
+        session.persist(new Dog("Aza", 4, "Wilczur","rwt"));
+
         transaction.commit();
         session.close();
     }

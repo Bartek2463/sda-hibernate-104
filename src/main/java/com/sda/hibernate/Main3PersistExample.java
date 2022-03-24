@@ -13,7 +13,7 @@ public class Main3PersistExample {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
 
-        Dog dog = new Dog("",4,"");
+        Dog dog = new Dog("",4,"","wet");
 
         session.persist(dog);
         session.evict(dog);

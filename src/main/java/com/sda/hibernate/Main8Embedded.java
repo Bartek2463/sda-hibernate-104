@@ -6,9 +6,12 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
+import java.sql.Time;
+import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Optional;
 
 public class Main8Embedded {
 
@@ -17,22 +20,23 @@ public class Main8Embedded {
 
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
+        Address address = new Address("Ostrow","Nowa");
+        Date date = new SimpleDateFormat("dd/MM/yyyy").parse("22/12/2012");
+        Employee employee = new Employee("Benio","dhcp",
+                "987654365",34,date, Employee.Gender.MALE,"desepto");
 
-        Address address = new Address("Gdansk", "Aleja Grunwaldzka");
-
-        Date date = new SimpleDateFormat("dd/MM/yyyy")
-                .parse("31/12/1998");
-        Employee employee = new Employee("Ola", "strongPassword",
-                "987654321", 20, date,
-                Employee.Gender.FEMALE, "description");
+        System.out.println("session = " + session);
 
         employee.setAddress(address);
-
-        address.setStreet("Chopina");
+        System.out.println("session = " + session);
 
         session.persist(employee);
+        session.evict(employee);
+        employee.setGender(Employee.Gender.FEMALE);
+        System.out.println("session = " + session);
 
         transaction.commit();
         session.close();
+        System.out.println("session = " + session);
     }
 }

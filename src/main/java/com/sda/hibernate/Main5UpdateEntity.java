@@ -5,6 +5,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
+import javax.persistence.OptimisticLockException;
 import java.util.Optional;
 
 public class Main5UpdateEntity {
@@ -14,25 +15,17 @@ public class Main5UpdateEntity {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
 
-       Dog rite = session.find(Dog.class,10L);
-       Optional.ofNullable(rite);
-        System.out.println(rite);
-
-
-        session.update(rite);
-        rite.setId(10L);
-        rite.setRace("Jamnik");
-        rite.setName("Benio");
-        rite.setAge(4);
-
-
-
-
+        Dog dog = session.find(Dog.class, 18L);
+        dog.setId(18L);
+        dog.setAge(3);
+        dog.setName("Benio");
+        dog.setRace("Jamnik");
 
 
 
 
         transaction.commit();
         session.close();
+
     }
 }
